@@ -47,12 +47,13 @@ let personagem = {
     altura: 50,
     velocidade_y: 0,
     pulando: false,
-    contadorPulos: 0
+    contadorPulos: 0,
+    imagem: new Image(),
 }
-
+personagem.imagem.src='./bolsonaro.png'
 function desenharPersonagem() {
-    ctx.fillStyle = 'white'
-    ctx.fillRect(personagem.x, personagem.y, personagem.largura, personagem.altura)
+    ctx.drawImage(personagem.imagem, personagem.x, personagem.y, personagem.largura, personagem.altura )
+    
 }
 
 function desenharObstaculo() {
