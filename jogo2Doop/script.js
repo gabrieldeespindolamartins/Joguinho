@@ -12,16 +12,31 @@ document.addEventListener("keypress", (e) => {
 })
 
 class Entidade {
+    #x
+    #y
     constructor(x, y, largura, altura, cor){
-        this.x = x;
-        this.y = y; 
+        this.#x = x;
+        this.#y = y; 
         this.largura = largura;
         this.altura = altura;
         this.cor = cor;
     }
     desenhar (){
         ctx.fillStyle = this.cor
-        ctx.fillRect(this.x, this.y, this.largura, this.altura)
+        ctx.fillRect(this.#x, this.#y, this.largura, this.altura)
+    }
+    get x(){
+        return this.#x
+    }
+    set x(value){
+        this.#x = value
+    }
+
+    get y(){
+        return this.#y
+    }
+    set y(value){
+        this.#y = value
     }
 }
 
@@ -42,11 +57,11 @@ class Personagem extends Entidade {
     }
     atualizar(){
         if(this.pulando){
-            this.y -= this.#velocidade_y
+            this.#y -= this.#velocidade_y
             this.#velocidade_y -= Jogo.gravidade
-            if(this.y >= canvas.height - 50){
+            if(this.#y >= canvas.height - 50){
                 this.#velocidade_y = 0
-                this.y = canvas.height - 50
+                this.#y = canvas.height - 50
                 this.pulando = false
             }
         }
